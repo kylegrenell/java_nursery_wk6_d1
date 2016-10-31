@@ -10,4 +10,8 @@ class Nursery{
   public String getName() {
     return this.name;
   }
+
+  public int getAmount() {
+    return this.amount;
+  }
 }
