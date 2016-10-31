@@ -8,12 +8,17 @@ public class NurseryTest {
   @Before
   public void before() {
     nursery = new Nursery("Planty McPlantplants", 70);
-    plant = new Plant("Xmas Tree");
+    plant = new Plant("Xmas Pine Tree");
   }
 
   @Test
   public void nurseryName() {
-    assertEquals("Planty McPlantplants", nursery.getName() );
+    assertEquals( "Planty McPlantplants", nursery.getName() );
+  }
+
+  @Test
+  public void plantName() {
+    assertEquals( "Xmas Pine Tree", plant.getName() );
   }
 
 }
