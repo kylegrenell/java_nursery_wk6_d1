@@ -26,6 +26,11 @@ public class NurseryTest {
     assertEquals( 70, nursery.getAmount() );
   }
 
+  @Test
+  public void nurseryIsEmpty(){
+    assertEquals( 0, nursery.plantCount() );
+  }
+
   // @Test
   // public void plantCost() {
   //   assertEquals( 25, plant.getCost() );
