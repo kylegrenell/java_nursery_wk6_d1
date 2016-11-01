@@ -1,31 +1,39 @@
+import java.util.*;
+
 class Nursery{
   private String name;
-  private int amount;
-  private Plant[] plants;
+  private ArrayList<Garden> garden;
   
-  public Nursery(String name, int amount) {
+  public Nursery(String name) {
     this.name = name;
-    this.amount = amount;
-    this.plants = new Plant[amount];
+    this.garden = new ArrayList<Garden>();
   }
+
 
   public String getName() {
     return this.name;
   }
 
-  public int getAmount() {
-    return this.amount;
+// count how many plants are planted in garden
+  public int plantCount() {
+    return this.garden.size();
   }
 
-    public int plantCount() {
-      int plantCount = 0;
+// can grow a plant in the garden
+  public void grow(Garden plant){
+    this.garden.add(plant);
+  } 
 
-      for (int i = 0; i < amount; i++) {
-        if (plants[i] != null) {
-          plantCount++;
-        }
-      }
-      return plantCount;
+// remove plants with disease
+  public Garden diseased(){
+    if (plantCount() > 0){
+      return this.garden.remove(0)
     }
+    return null
+  }
+
+  public void annual(){
+    this.garden.clear();
+  }
 
 }

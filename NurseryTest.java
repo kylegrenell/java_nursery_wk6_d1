@@ -1,14 +1,16 @@
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 import org.junit.*;
 
 public class NurseryTest {
   Nursery nursery;
-  Plant plant;
+  Herb herb;
+  Flower flower;
 
   @Before
   public void before() {
     nursery = new Nursery("Planty McPlantplants", 70);
-    plant = new Plant("Xmas Pine Tree", 25);
+    herb = new Herb("growing", "fed", 9);
+    flower = new Flower("growing", "fed", 7);
   }
 
   @Test
@@ -17,24 +19,76 @@ public class NurseryTest {
   }
 
   @Test
-  public void plantName() {
-    assertEquals( "Xmas Pine Tree", plant.getName() );
+  public void gardenStartsEmpty(){
+    assertEquals( 0, nursery.plantCount() );
   }
 
   @Test
-  public void nurseryPlantAmount() {
-    assertEquals( 70, nursery.getAmount() );
+  public void canBeFed(){
+    nursery.grow(plant);
+    assertEquals( 1, nursery.plantCount() );
+  }
+
+  @Test
+  public void removeDiseased(){
+    nursery.grow(plant);
+    Growable plant = nursery.diseased();
+    assertNotNull(plant);
+  }
+
+  @Test
+  public void canRevivePlant(){
+    nursery.grow(flower);
+    Growable plant = nursery.diseased();
+    Flower original = (Flower) plant;
+    assertEquals("growing", original.grow() );
+  }
+
+  @Test
+  public void canFeedPlant(){
+    nursery.grow(herb);
+    Growable plant = nursery.diseased();
+    assertEquals("fed", plant.feed() );
+  }
+
+  @Test 
+  public void totalGardenHealthRating(){
+    nursery.grow(herb);
+    nursery.grow(flower);
+    assertEquals(16, nursery.healthRating() );
   }
 
   @Test
   public void nurseryIsEmpty(){
+    nursery.grow(herb);
+    nursery.grow(flower);
+    nursery.annual();
     assertEquals( 0, nursery.plantCount() );
   }
 
-
-  // @Test
-  // public void plantCost() {
-  //   assertEquals( 25, plant.getCost() );
-  // }
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
