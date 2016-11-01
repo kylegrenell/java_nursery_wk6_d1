@@ -1,14 +1,14 @@
 import java.util.*;
 
-class Nursery{
+public class Nursery{
+ 
   private String name;
-  private ArrayList<Garden> garden;
+  private ArrayList<Growable> garden;
   
   public Nursery(String name) {
     this.name = name;
-    this.garden = new ArrayList<Garden>();
+    this.garden = new ArrayList<Growable>();
   }
-
 
   public String getName() {
     return this.name;
@@ -20,16 +20,25 @@ class Nursery{
   }
 
 // can grow a plant in the garden
-  public void grow(Garden plant){
+  public void grow(Growable plant){
     this.garden.add(plant);
   } 
 
 // remove plants with disease
-  public Garden diseased(){
+  public Growable diseased(){
     if (plantCount() > 0){
-      return this.garden.remove(0)
+      return this.garden.remove(0);
     }
-    return null
+    return null;
+  }
+
+  public int healthRating(){
+    int totalHealth = 0;
+
+    for (Growable plants : garden){
+      totalHealth += plants.healthRating();
+    }
+    return totalHealth;
   }
 
   public void annual(){

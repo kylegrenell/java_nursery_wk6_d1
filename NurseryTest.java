@@ -8,9 +8,9 @@ public class NurseryTest {
 
   @Before
   public void before() {
-    nursery = new Nursery("Planty McPlantplants", 70);
-    herb = new Herb("growing", "fed", 9);
-    flower = new Flower("growing", "fed", 7);
+    nursery = new Nursery("Planty McPlantplants");
+    herb = new Herb();
+    flower = new Flower();
   }
 
   @Test
@@ -25,13 +25,13 @@ public class NurseryTest {
 
   @Test
   public void canBeFed(){
-    nursery.grow(plant);
+    nursery.grow(flower);
     assertEquals( 1, nursery.plantCount() );
   }
 
   @Test
   public void removeDiseased(){
-    nursery.grow(plant);
+    nursery.grow(herb);
     Growable plant = nursery.diseased();
     assertNotNull(plant);
   }

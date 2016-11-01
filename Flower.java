@@ -1,4 +1,4 @@
-public class Flowers implements Growable{
+public class Flower implements Growable{
   public String grow(){
     return "growing";
   }
